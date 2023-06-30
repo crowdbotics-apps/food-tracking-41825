@@ -1,6 +1,6 @@
 import axios from "axios"
 const yellowmorningAPI = axios.create({
-  baseURL: "https://yellow-morning-41825.botics.co",
+  baseURL: "https://food-tracking-41825.botics.co",
   headers: { Accept: "application/json", "Content-Type": "application/json" }
 })
 function api_docs_schema_retrieve(payload) {

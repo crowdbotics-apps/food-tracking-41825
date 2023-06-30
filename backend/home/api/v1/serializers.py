@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from home.models import Food,FoodCategory,FoodConsumption,User
 from django.http import HttpRequest
 from django.utils.translation import ugettext_lazy as _
 from allauth.account import app_settings as allauth_settings
@@ -74,3 +75,21 @@ class UserSerializer(serializers.ModelSerializer):
 class PasswordSerializer(PasswordResetSerializer):
     """Custom serializer for rest_auth to solve reset password error"""
     password_reset_form_class = ResetPasswordForm
+
+class FoodConsumptionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FoodConsumption
+        fields = "__all__"
+
+class FoodSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Food
+        fields = "__all__"
+
+class FoodCategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FoodCategory
+        fields = "__all__"

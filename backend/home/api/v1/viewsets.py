@@ -1,3 +1,7 @@
+from rest_framework import viewsets
+from home.models import Food,FoodCategory,FoodConsumption,User
+from .serializers import FoodSerializer,FoodCategorySerializer,FoodConsumptionSerializer,UserSerializer
+from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
 from rest_framework.authtoken.models import Token
@@ -28,3 +32,23 @@ class LoginViewSet(ViewSet):
         token, created = Token.objects.get_or_create(user=user)
         user_serializer = UserSerializer(user)
         return Response({"token": token.key, "user": user_serializer.data})
+
+class FoodConsumptionViewSet(viewsets.ModelViewSet):
+    serializer_class = FoodConsumptionSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = FoodConsumption.objects.all()
+
+class FoodViewSet(viewsets.ModelViewSet):
+    serializer_class = FoodSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = Food.objects.all()
+
+class UserViewSet(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = User.objects.all()
+
+class FoodCategoryViewSet(viewsets.ModelViewSet):
+    serializer_class = FoodCategorySerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = FoodCategory.objects.all()

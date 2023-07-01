@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from home.models import Food,FoodCategory,FoodConsumption,User
-from .serializers import FoodSerializer,FoodCategorySerializer,FoodConsumptionSerializer,UserSerializer
+from home.models import AppUser,Food,FoodCategory,FoodConsumption,User
+from .serializers import AppUserSerializer,FoodSerializer,FoodCategorySerializer,FoodConsumptionSerializer,UserSerializer
 from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
@@ -52,3 +52,8 @@ class FoodCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = FoodCategorySerializer
     authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
     queryset = FoodCategory.objects.all()
+
+class AppUserViewSet(viewsets.ModelViewSet):
+    serializer_class = AppUserSerializer
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
+    queryset = AppUser.objects.all()

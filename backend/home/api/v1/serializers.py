@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from home.models import Food,FoodCategory,FoodConsumption,User
+from home.models import AppUser,Food,FoodCategory,FoodConsumption,User
 from django.http import HttpRequest
 from django.utils.translation import ugettext_lazy as _
 from allauth.account import app_settings as allauth_settings
@@ -92,4 +92,10 @@ class FoodCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FoodCategory
+        fields = "__all__"
+
+class AppUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AppUser
         fields = "__all__"
